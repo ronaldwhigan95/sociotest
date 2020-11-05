@@ -14,10 +14,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'SocioTest',
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        accentColor: Colors.blueGrey,
+      ),
       home: new HomePage(),
-      // routes: <String, WidgetBuilder>{
-      //   '/library': (BuildContext context) => new LibraryPage(),
-      // },
       onGenerateRoute: (routeSettings) {
         switch (routeSettings.name) {
           case '/library':
