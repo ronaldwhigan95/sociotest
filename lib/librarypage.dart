@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sociotest/getimages.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-//import 'package:path_provider/path_provider.dart';
-//import 'package:flutter/src/painting/_network_image_io.dart';
-//import 'package:sociotest/homepage.dart';
-
+import 'package:sociotest/main.dart';
 import 'images.dart';
 
 class LibraryPage extends StatefulWidget {
@@ -42,6 +38,8 @@ class _LibraryPageState extends State<LibraryPage> {
                     child: InkWell(
                       onTap: () {
                         Navigator.of(context).pop(hit.largeImageUrl);
+                        scaffoldKey.currentState.showSnackBar(new SnackBar(
+                            content: new Text("Wallpaper Changed")));
                       },
                       child: Image.network(hit.largeImageUrl),
                     ),
