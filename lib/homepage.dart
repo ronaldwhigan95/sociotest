@@ -17,9 +17,9 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Colors.blue[200],
+      //backgroundColor: Colors.blue[200],
       appBar: AppBar(
-        backgroundColor: Colors.blue[400],
+        // backgroundColor: Colors.blue[400],
         title: Text('TAPP'),
       ),
       drawer: Drawer(
@@ -97,7 +97,9 @@ class _HomePageState extends State<HomePage> {
           final selectedImageUrl =
               await Navigator.pushNamed<String>(context, '/library');
           setState(() {
-            selectImg = selectedImageUrl;
+            if (selectedImageUrl != null) {
+              selectImg = selectedImageUrl;
+            }
           });
         },
         child: Icon(Icons.image),

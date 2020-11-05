@@ -34,11 +34,17 @@ class _LibraryPageState extends State<LibraryPage> {
                 itemCount: hits.length,
                 itemBuilder: (context, index) {
                   final hit = hits[index];
-                  return InkWell(
-                    onTap: () {
-                      Navigator.of(context).pop(hit.largeImageUrl);
-                    },
-                    child: Image.network(hit.largeImageUrl),
+                  return Card(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    elevation: 5.0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).pop(hit.largeImageUrl);
+                      },
+                      child: Image.network(hit.largeImageUrl),
+                    ),
                   );
                 },
               ),
