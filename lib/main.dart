@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sociotest/librarypage.dart';
 import 'package:sociotest/homepage.dart';
 
-// void main() => runApp((MyApp()));
 void main() {
   runApp(MyApp());
 }
@@ -14,10 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'SocioTest',
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        accentColor: Colors.blueGrey,
+      ),
       home: new HomePage(),
-      // routes: <String, WidgetBuilder>{
-      //   '/library': (BuildContext context) => new LibraryPage(),
-      // },
       onGenerateRoute: (routeSettings) {
         switch (routeSettings.name) {
           case '/library':

@@ -1,6 +1,10 @@
 # sociotest
 
-A new Flutter project.
+A new Flutter project. I was not able to follow up on the database as it was a bit tricky to go over.
+Project is made possible with the use of the following:
+Pixabay API
+&
+Moor(to be followed)
 
 ## Getting Started
 

@@ -41,10 +41,8 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Colors.blue[200],
       appBar: AppBar(
-        backgroundColor: Colors.blue[400],
-        title: Text('TAPP'),
+        title: Text('The Wallpaper'),
       ),
       drawer: Drawer(
         child: ListView(
@@ -68,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Container(
                         child: Text(
-                          "Header",
+                          "Categories",
                           style: TextStyle(
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
@@ -82,29 +80,47 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: Icon(Icons.message),
-              title: Text('Messages'),
+              title: Text('Business'),
               onTap: () {
                 Navigator.of(scaffoldKey.currentState.context).pop();
-                scaffoldKey.currentState
-                    .showSnackBar(new SnackBar(content: new Text("Messages")));
+                scaffoldKey.currentState.showSnackBar(new SnackBar(
+                    content: new Text("Business Category Loaded")));
               },
             ),
             ListTile(
               leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
+              title: Text('Computer'),
               onTap: () {
                 Navigator.of(scaffoldKey.currentState.context).pop();
-                scaffoldKey.currentState
-                    .showSnackBar(new SnackBar(content: new Text("Profile")));
+                scaffoldKey.currentState.showSnackBar(new SnackBar(
+                    content: new Text("Computer Catergory Loaded")));
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: Text('Settings'),
+              title: Text('Dogs'),
               onTap: () {
                 Navigator.of(scaffoldKey.currentState.context).pop();
-                scaffoldKey.currentState
-                    .showSnackBar(new SnackBar(content: new Text("Settings")));
+                scaffoldKey.currentState.showSnackBar(
+                    new SnackBar(content: new Text("Dog Category Loaded")));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Reptiles'),
+              onTap: () {
+                Navigator.of(scaffoldKey.currentState.context).pop();
+                scaffoldKey.currentState.showSnackBar(
+                    new SnackBar(content: new Text("Reptile Category Loaded")));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Cats'),
+              onTap: () {
+                Navigator.of(scaffoldKey.currentState.context).pop();
+                scaffoldKey.currentState.showSnackBar(
+                    new SnackBar(content: new Text("Cats Category Loaded")));
               },
             ),
           ],
@@ -121,7 +137,9 @@ class _HomePageState extends State<HomePage> {
           final selectedImageUrl =
               await Navigator.pushNamed<String>(context, '/library');
           setState(() {
-            selectImg = selectedImageUrl;
+            if (selectedImageUrl != null) {
+              selectImg = selectedImageUrl;
+            }
           });
         },
         child: Icon(Icons.image),

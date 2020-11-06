@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sociotest/getimages.dart';
 import 'package:sociotest/db/database_helper.dart';
-
-//import 'package:cached_network_image/cached_network_image.dart';
-//import 'package:path_provider/path_provider.dart';
-//import 'package:flutter/src/painting/_network_image_io.dart';
-//import 'package:sociotest/homepage.dart';
-
+import 'package:sociotest/main.dart';
 import 'images.dart';
 
 class LibraryPage extends StatefulWidget {
@@ -38,12 +33,20 @@ class _LibraryPageState extends State<LibraryPage> {
                 itemCount: hits.length,
                 itemBuilder: (context, index) {
                   final hit = hits[index];
-                  return InkWell(
-                    onTap: () {
-                      Navigator.of(context).pop(hit.largeImageUrl);
-                      _insert(hit);
-                    },
-                    child: Image.network(hit.largeImageUrl),
+                  return Card(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    elevation: 5.0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).pop(hit.largeImageUrl);
+                        scaffoldKey.currentState.showSnackBar(new SnackBar(
+                            content: new Text("Wallpaper Changed")));
+                        _insert(hit);
+                      },
+                      child: Image.network(hit.largeImageUrl),
+                    ),
                   );
                 },
               ),
