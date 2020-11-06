@@ -84,6 +84,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.of(scaffoldKey.currentState.context).pop();
                 scaffoldKey.currentState.showSnackBar(new SnackBar(
+                    duration: const Duration(seconds: 2),
                     content: new Text("Business Category Loaded")));
               },
             ),
@@ -93,6 +94,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.of(scaffoldKey.currentState.context).pop();
                 scaffoldKey.currentState.showSnackBar(new SnackBar(
+                    duration: const Duration(seconds: 2),
                     content: new Text("Computer Catergory Loaded")));
               },
             ),
@@ -101,8 +103,9 @@ class _HomePageState extends State<HomePage> {
               title: Text('Dogs'),
               onTap: () {
                 Navigator.of(scaffoldKey.currentState.context).pop();
-                scaffoldKey.currentState.showSnackBar(
-                    new SnackBar(content: new Text("Dog Category Loaded")));
+                scaffoldKey.currentState.showSnackBar(new SnackBar(
+                    duration: const Duration(seconds: 2),
+                    content: new Text("Dog Category Loaded")));
               },
             ),
             ListTile(
@@ -110,8 +113,9 @@ class _HomePageState extends State<HomePage> {
               title: Text('Reptiles'),
               onTap: () {
                 Navigator.of(scaffoldKey.currentState.context).pop();
-                scaffoldKey.currentState.showSnackBar(
-                    new SnackBar(content: new Text("Reptile Category Loaded")));
+                scaffoldKey.currentState.showSnackBar(new SnackBar(
+                    duration: const Duration(seconds: 2),
+                    content: new Text("Reptile Category Loaded")));
               },
             ),
             ListTile(
@@ -119,8 +123,9 @@ class _HomePageState extends State<HomePage> {
               title: Text('Cats'),
               onTap: () {
                 Navigator.of(scaffoldKey.currentState.context).pop();
-                scaffoldKey.currentState.showSnackBar(
-                    new SnackBar(content: new Text("Cats Category Loaded")));
+                scaffoldKey.currentState.showSnackBar(new SnackBar(
+                    duration: const Duration(seconds: 2),
+                    content: new Text("Cats Category Loaded")));
               },
             ),
           ],

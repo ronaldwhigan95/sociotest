@@ -42,6 +42,7 @@ class _LibraryPageState extends State<LibraryPage> {
                       onTap: () {
                         Navigator.of(context).pop(hit.largeImageUrl);
                         scaffoldKey.currentState.showSnackBar(new SnackBar(
+                            duration: const Duration(seconds: 2),
                             content: new Text("Wallpaper Changed")));
                         _insert(hit);
                       },
