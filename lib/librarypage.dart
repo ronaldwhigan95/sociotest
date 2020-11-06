@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sociotest/getimages.dart';
+import 'package:sociotest/db/database_helper.dart';
 import 'package:sociotest/main.dart';
 import 'images.dart';
 
@@ -7,6 +8,8 @@ class LibraryPage extends StatefulWidget {
   @override
   _LibraryPageState createState() => _LibraryPageState();
 }
+
+final dbHelper = DatabaseHelper.instance;
 
 class _LibraryPageState extends State<LibraryPage> {
   @override
@@ -40,6 +43,7 @@ class _LibraryPageState extends State<LibraryPage> {
                         Navigator.of(context).pop(hit.largeImageUrl);
                         scaffoldKey.currentState.showSnackBar(new SnackBar(
                             content: new Text("Wallpaper Changed")));
+                        _insert(hit);
                       },
                       child: Image.network(hit.largeImageUrl),
                     ),
@@ -57,5 +61,14 @@ class _LibraryPageState extends State<LibraryPage> {
     );
   }
 }
-// Image.network(
-// '${data['hits'][index]['largeImageURL']}'),
+
+void _insert(Hit hit) async {
+  // row to insert
+  Map<String, dynamic> row = {
+    DatabaseHelper.columnDate: DateTime.now().toUtc().millisecondsSinceEpoch,
+    DatabaseHelper.columnUrl: hit.largeImageUrl,
+  };
+  final id = await dbHelper.insert(row);
+  print('inserted row id: $id');
+  print(row);
+}
