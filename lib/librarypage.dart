@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sociotest/getimages.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:sociotest/db/database_helper.dart';
+
+//import 'package:cached_network_image/cached_network_image.dart';
 //import 'package:path_provider/path_provider.dart';
 //import 'package:flutter/src/painting/_network_image_io.dart';
 //import 'package:sociotest/homepage.dart';
@@ -11,6 +13,8 @@ class LibraryPage extends StatefulWidget {
   @override
   _LibraryPageState createState() => _LibraryPageState();
 }
+
+final dbHelper = DatabaseHelper.instance;
 
 class _LibraryPageState extends State<LibraryPage> {
   @override
@@ -37,6 +41,7 @@ class _LibraryPageState extends State<LibraryPage> {
                   return InkWell(
                     onTap: () {
                       Navigator.of(context).pop(hit.largeImageUrl);
+                      _insert(hit);
                     },
                     child: Image.network(hit.largeImageUrl),
                   );
@@ -53,5 +58,14 @@ class _LibraryPageState extends State<LibraryPage> {
     );
   }
 }
-// Image.network(
-// '${data['hits'][index]['largeImageURL']}'),
+
+void _insert(Hit hit) async {
+  // row to insert
+  Map<String, dynamic> row = {
+    DatabaseHelper.columnDate: DateTime.now().toUtc().millisecondsSinceEpoch,
+    DatabaseHelper.columnUrl: hit.largeImageUrl,
+  };
+  final id = await dbHelper.insert(row);
+  print('inserted row id: $id');
+  print(row);
+}

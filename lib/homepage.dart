@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sociotest/main.dart';
+import 'package:sociotest/db/database_helper.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,6 +10,29 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var selectImg = 'https://wallpapercave.com/wp/wp3788126.jpg';
+
+  @override
+  void initState() {
+    super.initState();
+    _getCurrentlySelectedImg();
+  }
+
+  Future<void> _getCurrentlySelectedImg() async {
+    final results = List<Map<String, dynamic>>.from(
+        await DatabaseHelper.instance.queryAllRows());
+    if (results.isNotEmpty) {
+      results.sort((a, b) {
+        final aDate = a[DatabaseHelper.columnDate] as int;
+        final bDate = b[DatabaseHelper.columnDate] as int;
+        return aDate.compareTo(bDate);
+      });
+      setState(() {
+        final firstImg = results.first;
+        final firstImgUrl = firstImg[DatabaseHelper.columnUrl];
+        selectImg = firstImgUrl;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
