@@ -10,8 +10,15 @@ class LibraryPage extends StatefulWidget {
 }
 
 final dbHelper = DatabaseHelper.instance;
+var selectedCategory = getImages();
 
 class _LibraryPageState extends State<LibraryPage> {
+  @override
+  void initState() {
+    super.initState();
+    // _getCurrentlySelectedImg();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +26,7 @@ class _LibraryPageState extends State<LibraryPage> {
         title: Text("Library"),
       ),
       body: new FutureBuilder<Images>(
-        future: getImages(),
+        future: selectedCategory,
         builder: (context, snapShot) {
           if (snapShot.hasError) {
             print(snapShot.hasError);

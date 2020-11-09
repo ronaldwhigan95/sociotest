@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:sociotest/librarypage.dart';
 import 'package:sociotest/main.dart';
 import 'package:sociotest/db/database_helper.dart';
+import 'package:sociotest/getimages.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -82,6 +84,7 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.message),
               title: Text('Business'),
               onTap: () {
+                selectedCategory = getImagesBC();
                 Navigator.of(scaffoldKey.currentState.context).pop();
                 scaffoldKey.currentState.showSnackBar(new SnackBar(
                     duration: const Duration(seconds: 2),
@@ -92,6 +95,7 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.account_circle),
               title: Text('Computer'),
               onTap: () {
+                selectedCategory = getImagesCompC();
                 Navigator.of(scaffoldKey.currentState.context).pop();
                 scaffoldKey.currentState.showSnackBar(new SnackBar(
                     duration: const Duration(seconds: 2),
@@ -102,6 +106,7 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.settings),
               title: Text('Dogs'),
               onTap: () {
+                selectedCategory = getImagesDC();
                 Navigator.of(scaffoldKey.currentState.context).pop();
                 scaffoldKey.currentState.showSnackBar(new SnackBar(
                     duration: const Duration(seconds: 2),
@@ -112,6 +117,7 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.settings),
               title: Text('Reptiles'),
               onTap: () {
+                selectedCategory = getImagesRC();
                 Navigator.of(scaffoldKey.currentState.context).pop();
                 scaffoldKey.currentState.showSnackBar(new SnackBar(
                     duration: const Duration(seconds: 2),
@@ -122,6 +128,7 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.settings),
               title: Text('Cats'),
               onTap: () {
+                selectedCategory = getImagesCatC();
                 Navigator.of(scaffoldKey.currentState.context).pop();
                 scaffoldKey.currentState.showSnackBar(new SnackBar(
                     duration: const Duration(seconds: 2),
