@@ -4,6 +4,7 @@ import 'package:sociotest/librarypage.dart';
 import 'package:sociotest/main.dart';
 import 'package:sociotest/db/database_helper.dart';
 import 'package:sociotest/getimages.dart';
+import 'package:floating_search_bar/floating_search_bar.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -44,7 +45,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: Text('The Wallpaper'),
+        flexibleSpace: FloatingSearchBar.builder(
+            itemBuilder: (BuildContext context, int index) {
+              return;
+            },
+            itemCount: 100),
       ),
       drawer: Drawer(
         child: ListView(
