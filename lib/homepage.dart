@@ -43,14 +43,19 @@ class _HomePageState extends State<HomePage> {
     final size = mediaQuery.size; // Current size of the `window`
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
       key: scaffoldKey,
-      appBar: AppBar(
-        flexibleSpace: FloatingSearchBar.builder(
-            itemBuilder: (BuildContext context, int index) {
-              return;
-            },
-            itemCount: 100),
-      ),
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false,
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 50,
+      //   flexibleSpace: FloatingSearchBar.builder(
+      //       itemBuilder: (BuildContext context, int index) {
+      //         return;
+      //       },
+      //       itemCount: 100),
+      // ),
+
       drawer: Drawer(
         child: ListView(
           children: <Widget>[

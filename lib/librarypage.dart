@@ -44,7 +44,8 @@ class _LibraryPageState extends State<LibraryPage> {
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     elevation: 5.0,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     child: InkWell(
                       onTap: () {
                         Navigator.of(context).pop(hit.largeImageUrl);
@@ -53,7 +54,7 @@ class _LibraryPageState extends State<LibraryPage> {
                             content: new Text("Wallpaper Changed")));
                         _insert(hit);
                       },
-                      child: Image.network(hit.largeImageUrl),
+                      child: Image.network(hit.previewUrl),
                     ),
                   );
                 },
@@ -74,7 +75,7 @@ void _insert(Hit hit) async {
   // row to insert
   Map<String, dynamic> row = {
     DatabaseHelper.columnDate: DateTime.now().toUtc().millisecondsSinceEpoch,
-    DatabaseHelper.columnUrl: hit.largeImageUrl,
+    DatabaseHelper.columnUrl: hit.previewUrl,
   };
   final id = await dbHelper.insert(row);
   print('inserted row id: $id');
